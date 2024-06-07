@@ -37,7 +37,8 @@ std::uint64_t perft(bool root, Position& pos, int depth) {
       }
       pos.unmake_move();
     }
-    tt[depth][pos.hash()] = count;
+    //tt[depth][pos.hash()] = count;
+    tt[depth].emplace(pos.hash(), count);
     return count;
   } else {
     return 1;
