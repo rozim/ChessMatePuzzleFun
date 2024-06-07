@@ -15,8 +15,7 @@
 using namespace libchess;
 using namespace constants;
 
-//typedef absl::flat_hash_map<std::uint64_t, int> ResMap;
-typedef absl::btree_map<std::uint64_t, int> ResMap;
+typedef absl::flat_hash_map<std::uint64_t, std::uint64_t> ResMap;
 
 std::vector<ResMap> tt(10);
 
@@ -40,7 +39,6 @@ std::uint64_t perft(bool root, Position& pos, int depth) {
       }
       pos.unmake_move();
     }
-    //tt[depth][pos.hash()] = count;
     tt[depth].emplace(pos.hash(), count);
     return count;
   } else {
