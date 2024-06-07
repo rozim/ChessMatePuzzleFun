@@ -4,18 +4,17 @@
 
 #include <iostream>
 #include <vector>
-#include <map>
 
 #include "libchess/Position.h"
 #include "libchess/Color.h"
 #include "libchess/Move.h"
 
-//#include <abseil/flat_hash_map>
+#include "absl/container/flat_hash_map.h"
 
 using namespace libchess;
 using namespace constants;
 
-typedef std::map<std::uint64_t, int> ResMap;
+typedef absl::flat_hash_map<std::uint64_t, int> ResMap;
 std::vector<ResMap> tt(10);
 
 std::uint64_t perft(bool root, Position& pos, int depth) {
