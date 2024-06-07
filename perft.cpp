@@ -24,34 +24,6 @@ std::uint64_t perft(bool root, Position& pos, int depth) {
   }
 }
 
-// Somewhat hard to follow formulation based on Stockfish.
-/*
-std::uint64_t perft(bool root, Position& pos, int depth) {
-  if (depth <= 0) {
-    return 0;
-  }
-  uint64_t nodes = 0;
-  const MoveList ml = pos.legal_move_list();
-  const bool leaf = (depth == 2);
-
-  for (int i = 0; i < ml.size(); i++) {
-    if (root && depth <= 1) {
-      nodes++;
-    } {
-      pos.make_move(ml.values()[i]);
-      if (leaf) {
-	nodes += pos.legal_move_list().size();
-      } else {
-	nodes += perft(false, pos, depth - 1);
-      }
-      pos.unmake_move();
-    }
-  }
-
-  return nodes;
-}
-*/
-
 int main(int argc, char* argv[]) {
   Position pos(STARTPOS_FEN);
   for (int d = 1; d < 10; d++) {
