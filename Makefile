@@ -5,6 +5,8 @@ LDFLAGS = -pthread -Wl, $(CXXFLAGS) $(EXTRALDFLAGS)
 
 CXXFLAGS += `PKG_CONFIG_PATH=/opt/homebrew/opt/abseil/lib/pkgconfig pkg-config --cflags absl_flat_hash_map`
 LDFLAGS += `PKG_CONFIG_PATH=/opt/homebrew/opt/abseil/lib/pkgconfig pkg-config  --libs absl_flat_hash_map`
+CXXFLAGS += `PKG_CONFIG_PATH=/opt/homebrew/opt/abseil/lib/pkgconfig pkg-config --cflags absl_btree`
+LDFLAGS += `PKG_CONFIG_PATH=/opt/homebrew/opt/abseil/lib/pkgconfig pkg-config  --libs absl_btree`
 
 all : puzzler perft
 	echo ok

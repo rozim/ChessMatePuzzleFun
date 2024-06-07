@@ -10,11 +10,14 @@
 #include "libchess/Move.h"
 
 #include "absl/container/flat_hash_map.h"
+#include "absl/container/btree_map.h"
 
 using namespace libchess;
 using namespace constants;
 
-typedef absl::flat_hash_map<std::uint64_t, int> ResMap;
+//typedef absl::flat_hash_map<std::uint64_t, int> ResMap;
+typedef absl::btree_map<std::uint64_t, int> ResMap;
+
 std::vector<ResMap> tt(10);
 
 std::uint64_t perft(bool root, Position& pos, int depth) {
