@@ -26,4 +26,17 @@ d: 5 4865609 0s
 d: 6 119060324 1s
 d: 7 3195901860 9s
 d: 8 84998978956 92s
+d: 9 2439530234534 1190s
+
+```
+
+ut oh, problem suddently based on https://www.chessprogramming.org/Perft_Results
+```
+actual:
+d: 9 2439530234534 1190s
+d: 9 2,439,530,234,534 1190s
+correct
+     2,439,530,234,167
+
+difference of 367
 ```
