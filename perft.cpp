@@ -1,18 +1,32 @@
 
 
 #include <time.h>
+
 #include <iostream>
+#include <vector>
+#include <map>
+
 #include "libchess/Position.h"
 #include "libchess/Color.h"
 #include "libchess/Move.h"
 
+//#include <abseil/flat_hash_map>
+
 using namespace libchess;
 using namespace constants;
+
+typedef std::map<std::uint64_t, int> ResMap;
+std::vector<ResMap> tt(10);
 
 std::uint64_t perft(bool root, Position& pos, int depth) {
   if (depth == 1) {
     return pos.legal_move_list().size();
   } else if (depth > 1) {
+    auto it = tt[depth].find(pos.hash());
+    if (it != tt[depth].end()) {
+      return it->second;
+    }
+
     std::uint64_t count = 0;
     const MoveList ml = pos.legal_move_list();
     for (int i = 0; i < ml.size(); i++) {
@@ -24,6 +38,7 @@ std::uint64_t perft(bool root, Position& pos, int depth) {
       }
       pos.unmake_move();
     }
+    tt[depth][pos.hash()] = count;
     return count;
   } else {
     return 1;
@@ -32,7 +47,7 @@ std::uint64_t perft(bool root, Position& pos, int depth) {
 
 int main(int argc, char* argv[]) {
   Position pos(STARTPOS_FEN);
-  for (int d = 1; d < 8; d++) {
+  for (int d = 1; d < 9; d++) {
     auto t1 = time(0L);
     auto res = perft(true, pos, d);
     auto dt = time(0L) - t1;
