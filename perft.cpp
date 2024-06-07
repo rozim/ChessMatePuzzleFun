@@ -54,7 +54,7 @@ std::uint64_t perft(bool root, Position& pos, int depth) {
 
 int main(int argc, char* argv[]) {
   Position pos(STARTPOS_FEN);
-  for (int d = 1; d < 8; d++) {
+  for (int d = 1; d < 10; d++) {
     auto t1 = time(0L);
     auto res = perft(true, pos, d);
     auto dt = time(0L) - t1;
